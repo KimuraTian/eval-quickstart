@@ -106,6 +106,7 @@ task evaluate(type: TrainTest, group: 'evaluate') {
     // configure our algorithms
     algorithm 'PersMean', 'algorithms/pers-mean.groovy'
     algorithm 'ItemItem', 'algorithms/item-item.groovy'
+    algorithm 'SLIM', 'algorithms/slim.groovy'
     algorithm 'Custom', 'algorithms/custom.groovy'
 
     // and some evaluation tasks and metrics
