@@ -39,6 +39,7 @@ repositories {
 dependencies {
     // Code needs to build with LensKit.
     compile "org.lenskit:lenskit-all:${project.findProperty('lenskit.version') ?: '3.0-SNAPSHOT'}"
+    compile "org.lenskit:lenskit-slim:${project.findProperty('lenskit.version') ?: '3.0-SNAPSHOT'}"
     // To run the code, we also need the LensKit CLI.
     runtime "org.lenskit:lenskit-cli:${project.findProperty('lenskit.version') ?: '3.0-SNAPSHOT'}"
 
