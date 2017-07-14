@@ -86,7 +86,8 @@ task crossfold(type: Crossfold, group: 'evaluate') {
 
     input 'data/ml-100k.yml'
     // test on random 1/5 of each user's ratings
-    holdoutFraction(0.2, 'random')
+//    holdoutFraction(0.2, 'random')
+    holdout(1, 'random')
     // use 5-fold cross-validation
     partitionCount 5
 }
@@ -122,6 +123,7 @@ task evaluate(type: TrainTest, group: 'evaluate') {
         metric 'ndcg'
         metric 'mrr'
         metric 'map'
+        metric 'pr'
     }
 }
 
