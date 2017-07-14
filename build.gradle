@@ -115,15 +115,22 @@ task evaluate(type: TrainTest, group: 'evaluate') {
     predict {
         metric 'coverage'
         metric 'rmse'
-        metric 'ndcg'
+//        metric 'ndcg'
     }
     recommend {
         listSize 10
+        candidateItems "allItems"
         metric 'length'
-        metric 'ndcg'
-        metric 'mrr'
-        metric 'map'
-        metric 'pr'
+//        metric 'ndcg'
+        metric('mrr') {
+            goodItems 'user.testItems'
+        }
+        metric('map') {
+            goodItems "user.testItems"
+        }
+        metric('pr') {
+            goodItems "user.testItems"
+        }
     }
 }
 
