@@ -1,17 +1,19 @@
 ratings:
-  file: bx/BX-Book-Ratings.csv
+  file: bx/Ratings-Explicit.csv
   format: delimited
-  delimiter: ";"
+  delimiter: ","
   header: true
   entity_type: rating
-items:
-  file: bx/BX-Books.csv
+books:
+  file: bx/bx-author-gender.csv
   format: delimited
-  delimiter: ";"
+  delimiter: ","
   header: true
   entity_type: item
   columns:
   - name: id
     type: long
-  - name: name
+  - name: authorName
+    type: string
+  - name: authorGender
     type: string

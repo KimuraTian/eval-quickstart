@@ -83,10 +83,11 @@ task fetchData {
 
 task crossfold(type: Crossfold, group: 'evaluate') {
     // download data before evaluating
-    dependsOn fetchData
+//    dependsOn fetchData
 
 //    input 'data/ml-100k.yml'
-    input 'data/ml-10m.yml'
+//    input 'data/ml-10m.yml'
+    input 'data/bx.yml'
     // test on random 1/5 of each user's ratings
 //    holdoutFraction(0.2, 'random')
     holdout(1, 'random')
@@ -108,10 +109,10 @@ task evaluate(type: TrainTest, group: 'evaluate') {
     userOutputFile "$buildDir/eval-users.csv"
 
     // configure our algorithms
-    algorithm 'PersMean', 'algorithms/pers-mean.groovy'
+//    algorithm 'PersMean', 'algorithms/pers-mean.groovy'
     algorithm 'ItemItem', 'algorithms/item-item.groovy'
     algorithm 'algorithms/slim.groovy'
-    algorithm 'Popular', 'algorithms/popular.groovy'
+//    algorithm 'Popular', 'algorithms/popular.groovy'
 
     // and some evaluation tasks and metrics
     predict {

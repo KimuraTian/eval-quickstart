@@ -14,8 +14,8 @@ import org.grouplens.lenskit.iterative.ThresholdStoppingCondition
 import org.grouplens.lenskit.iterative.StoppingThreshold
 import org.grouplens.lenskit.iterative.RegularizationTerm
 
-for (beta in [1]) {
-    for (lambda in [0.5, 1, 2]) {
+for (beta in [3]) {
+    for (lambda in [0.5, 1]) {
         algorithm("SLIM-Norm") {
             attributes["Beta"] = beta
             attributes["lambda"] = lambda
