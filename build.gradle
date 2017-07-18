@@ -51,6 +51,7 @@ dependencies {
 lenskit {
     // you can configure the threadCount and maxMemory here, or on the command line
     // e.g. -PthreadCount=8
+    //lenskit.maxMemory=2048
 }
 
 import org.lenskit.gradle.*
@@ -84,7 +85,8 @@ task crossfold(type: Crossfold, group: 'evaluate') {
     // download data before evaluating
     dependsOn fetchData
 
-    input 'data/ml-100k.yml'
+//    input 'data/ml-100k.yml'
+    input 'data/ml-10m.yml'
     // test on random 1/5 of each user's ratings
 //    holdoutFraction(0.2, 'random')
     holdout(1, 'random')
@@ -108,7 +110,7 @@ task evaluate(type: TrainTest, group: 'evaluate') {
     // configure our algorithms
     algorithm 'PersMean', 'algorithms/pers-mean.groovy'
     algorithm 'ItemItem', 'algorithms/item-item.groovy'
-    algorithm 'SLIM', 'algorithms/slim.groovy'
+    algorithm 'algorithms/slim.groovy'
     algorithm 'Popular', 'algorithms/popular.groovy'
 
     // and some evaluation tasks and metrics
