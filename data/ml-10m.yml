@@ -1,0 +1,17 @@
+ratings:
+  file: ml-10m/ratings.dat
+  format: delimited
+  delimiter: "::"
+  header: false
+  entity_type: rating
+items:
+  file: ml-10m/movies.dat
+  format: delimited
+  delimiter: "::"
+  header: false
+  entity_type: item
+  columns:
+  - name: id
+    type: long
+  - name: name
+    type: string
