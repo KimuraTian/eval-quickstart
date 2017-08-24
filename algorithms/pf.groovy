@@ -9,7 +9,7 @@ import org.lenskit.mf.funksvd.FeatureCount
 
 import org.lenskit.pf.HPFItemScorer
 import org.lenskit.pf.IterationFrequency
-import org.lenskit.pf.Splitproportion
+import org.lenskit.pf.SplitProportion
 
 
 bind ItemScorer to HPFItemScorer
@@ -18,4 +18,4 @@ set IterationFrequency to 100
 set MinimumIterations to 200
 set StoppingThreshold to 0.000001
 set FeatureCount to 100
-set Splitproportion to 0.01
+set SplitProportion to 0.01
