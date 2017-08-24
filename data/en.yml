@@ -1,5 +1,6 @@
 ratings:
   file: en/EN-MS-implicit.csv
-  format: csv
+  format: delimited
+  delimiter: ","
   header: false
   entity_type: rating
