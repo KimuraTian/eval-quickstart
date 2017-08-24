@@ -87,10 +87,11 @@ task crossfold(type: Crossfold, group: 'evaluate') {
 
 //    input 'data/ml-100k.yml'
 //    input 'data/ml-10m.yml'
-    input 'data/bx.yml'
+//    input 'data/bx.yml'
+    input 'data/en.yml'
     // test on random 1/5 of each user's ratings
-//    holdoutFraction(0.2, 'random')
-    holdout(1, 'random')
+    holdoutFraction(0.2, 'random')
+//    holdout(1, 'random')
     // use 5-fold cross-validation
     partitionCount 5
 }
@@ -102,6 +103,7 @@ task evaluate(type: TrainTest, group: 'evaluate') {
     logFileLevel 'DEBUG'
 
     // we add our crossfold task as evaluation input
+//    dataSet crossfold, isolate: true
     dataSet crossfold
 
     // send the output to appropriate files
@@ -110,8 +112,10 @@ task evaluate(type: TrainTest, group: 'evaluate') {
 
     // configure our algorithms
 //    algorithm 'PersMean', 'algorithms/pers-mean.groovy'
-    algorithm 'ItemItem', 'algorithms/item-item.groovy'
-    algorithm 'algorithms/slim.groovy'
+//    algorithm 'ItemItem', 'algorithms/item-item.groovy'
+//    algorithm 'ItemItem', 'algorithms/item-item-bias.groovy'
+//    algorithm 'algorithms/slim.groovy'
+    algorithm 'PF', 'algorithms/pf.groovy'
 //    algorithm 'Popular', 'algorithms/popular.groovy'
 
     // and some evaluation tasks and metrics
@@ -121,19 +125,15 @@ task evaluate(type: TrainTest, group: 'evaluate') {
 //        metric 'ndcg'
     }
     recommend {
-        listSize 10
+        listSize 20
+//        candidateItems "allItems"
         candidateItems "allItems"
+        excludeItems "user.trainItems"
         metric 'length'
 //        metric 'ndcg'
-        metric('mrr') {
-            goodItems 'user.testItems'
-        }
-        metric('map') {
-            goodItems "user.testItems"
-        }
-        metric('pr') {
-            goodItems "user.testItems"
-        }
+//        metric 'mrr'
+//        metric 'map'
+        metric 'pr'
     }
 }
 
@@ -164,7 +164,8 @@ task recommendItemItem(type: JavaExec, group: 'run') {
     main 'org.lenskit.cli.Main'
     args '--log-file', "$buildDir/item-item.log", '--log-file-level', 'debug'
     args 'recommend'
-    args '--data-source', 'data/ml-100k.yml'
+//    args '--data-source', 'data/ml-100k.yml'
+    args '--data-source', 'data/bx.yml'
     args '-c', 'algorithms/item-item.groovy'
 
     ext.users = (project.findProperty('users') ?: '100').split(/,/)
