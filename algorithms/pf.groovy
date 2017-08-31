@@ -1,3 +1,4 @@
+import org.grouplens.lenskit.iterative.IterationCount
 import org.grouplens.lenskit.iterative.StoppingCondition
 import org.grouplens.lenskit.iterative.ErrorThresholdStoppingCondition
 import org.grouplens.lenskit.iterative.MinimumIterations
@@ -9,13 +10,18 @@ import org.lenskit.mf.funksvd.FeatureCount
 
 import org.lenskit.pf.HPFItemScorer
 import org.lenskit.pf.IterationFrequency
-import org.lenskit.pf.SplitProportion
-
+import org.lenskit.pf.IsProbabilityPrediciton
+import org.lenskit.data.entities.CommonTypes
+import org.lenskit.data.ratings.EntityCountRatingVectorPDAO
+import org.lenskit.data.ratings.InteractionEntityType
+import org.lenskit.data.ratings.RatingVectorPDAO
 
 bind ItemScorer to HPFItemScorer
-bind StoppingCondition to ErrorThresholdStoppingCondition
+
+bind RatingVectorPDAO to EntityCountRatingVectorPDAO
+set InteractionEntityType to CommonTypes.RATING
+
 set IterationFrequency to 100
-set MinimumIterations to 200
-set StoppingThreshold to 0.000001
+set IterationCount to 500
 set FeatureCount to 100
-set SplitProportion to 0.01
+set IsProbabilityPrediciton to false

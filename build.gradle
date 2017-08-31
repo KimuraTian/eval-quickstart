@@ -85,10 +85,10 @@ task crossfold(type: Crossfold, group: 'evaluate') {
     // download data before evaluating
 //    dependsOn fetchData
 
-//    input 'data/ml-100k.yml'
+    input 'data/ml-100k.yml'
 //    input 'data/ml-10m.yml'
 //    input 'data/bx.yml'
-    input 'data/en.yml'
+//    input 'data/en.yml'
     // test on random 1/5 of each user's ratings
     holdoutFraction(0.2, 'random')
 //    holdout(1, 'random')
@@ -112,11 +112,13 @@ task evaluate(type: TrainTest, group: 'evaluate') {
 
     // configure our algorithms
 //    algorithm 'PersMean', 'algorithms/pers-mean.groovy'
-//    algorithm 'ItemItem', 'algorithms/item-item.groovy'
+    algorithm 'ItemItem', 'algorithms/item-item.groovy'
 //    algorithm 'ItemItem', 'algorithms/item-item-bias.groovy'
 //    algorithm 'algorithms/slim.groovy'
     algorithm 'PF', 'algorithms/pf.groovy'
-//    algorithm 'Popular', 'algorithms/popular.groovy'
+    algorithm 'Popular', 'algorithms/popular.groovy'
+//    algorithm 'funkSVD-Implicit', 'algorithms/funkSVD-Implicit.groovy'
+    algorithm 'funkSVD', 'algorithms/funksvd.groovy'
 
     // and some evaluation tasks and metrics
     predict {
@@ -132,7 +134,7 @@ task evaluate(type: TrainTest, group: 'evaluate') {
         metric 'length'
 //        metric 'ndcg'
 //        metric 'mrr'
-//        metric 'map'
+        metric 'map'
         metric 'pr'
     }
 }
