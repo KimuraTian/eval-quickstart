@@ -112,13 +112,16 @@ task evaluate(type: TrainTest, group: 'evaluate') {
 
     // configure our algorithms
 //    algorithm 'PersMean', 'algorithms/pers-mean.groovy'
-    algorithm 'ItemItem', 'algorithms/item-item.groovy'
+//    algorithm 'ItemItem', 'algorithms/item-item.groovy'
 //    algorithm 'ItemItem', 'algorithms/item-item-bias.groovy'
 //    algorithm 'algorithms/slim.groovy'
-    algorithm 'PF', 'algorithms/pf.groovy'
+//    algorithm 'PF', 'algorithms/pf.groovy'
     algorithm 'Popular', 'algorithms/popular.groovy'
-//    algorithm 'funkSVD-Implicit', 'algorithms/funkSVD-Implicit.groovy'
-    algorithm 'funkSVD', 'algorithms/funksvd.groovy'
+//    algorithm 'funkSVD', 'algorithms/funksvd.groovy'
+
+    algorithm 'ItemItem-Implicit', 'algorithms/item-item-implicit.groovy'
+    algorithm 'funkSVD-Implicit', 'algorithms/funksvd-implicit.groovy'
+    algorithm 'PF-Implicit', 'algorithms/pf-implicit.groovy'
 
     // and some evaluation tasks and metrics
     predict {
@@ -133,8 +136,8 @@ task evaluate(type: TrainTest, group: 'evaluate') {
         excludeItems "user.trainItems"
         metric 'length'
 //        metric 'ndcg'
-//        metric 'mrr'
-        metric 'map'
+        metric 'mrr'
+//        metric 'map'
         metric 'pr'
     }
 }

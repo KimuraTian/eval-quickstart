@@ -17,8 +17,9 @@ import org.lenskit.data.ratings.InteractionEntityType
 import org.lenskit.data.ratings.RatingVectorPDAO
 
 bind ItemScorer to HPFItemScorer
+bind RatingVectorPDAO to EntityCountRatingVectorPDAO
+set InteractionEntityType to CommonTypes.RATING
 
 set IterationFrequency to 100
 set IterationCount to 500
 set FeatureCount to 100
-set IsProbabilityPrediciton to false
