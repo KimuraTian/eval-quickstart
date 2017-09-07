@@ -108,8 +108,8 @@ task evaluate(type: TrainTest, group: 'evaluate') {
     dataSet crossfold
 
     // send the output to appropriate files
-    outputFile "$buildDir/eval-results.csv"
-    userOutputFile "$buildDir/eval-users.csv"
+    outputFile "$buildDir/eval-results-implicit.csv"
+    userOutputFile "$buildDir/eval-users-implicit.csv"
 
     // configure our algorithms
 //    algorithm 'PersMean', 'algorithms/pers-mean.groovy'
