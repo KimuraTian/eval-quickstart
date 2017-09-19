@@ -18,7 +18,7 @@ bind RatingVectorPDAO to EntityCountRatingVectorPDAO
 set InteractionEntityType to CommonTypes.RATING
 
 bind ItemScorer to FunkSVDItemScorer
-set IterationCount to 500
+set IterationCount to 125
 
 
 set FeatureCount to 100

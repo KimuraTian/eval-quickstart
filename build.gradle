@@ -121,11 +121,11 @@ task evaluate(type: TrainTest, group: 'evaluate') {
 //    algorithm 'funkSVD', 'algorithms/funksvd.groovy'
 
 //    algorithm 'ItemItem-Implicit', 'algorithms/item-item-implicit.groovy'
-//    algorithm 'funkSVD-Implicit', 'algorithms/funksvd-implicit.groovy'
-//    algorithm 'PF-Implicit', 'algorithms/pf-implicit.groovy'
+    algorithm 'funkSVD-Implicit', 'algorithms/funksvd-implicit.groovy'
+    algorithm 'PF-Implicit', 'algorithms/pf-implicit.groovy'
 
-    algorithm 'algorithms/funksvd-implicit-sweep.groovy'
-    algorithm 'algorithms/pf-implicit-sweep.groovy'
+//    algorithm 'algorithms/funksvd-implicit-sweep.groovy'
+//    algorithm 'algorithms/pf-implicit-sweep.groovy'
 
     // and some evaluation tasks and metrics
     predict {

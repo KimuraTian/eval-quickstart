@@ -11,6 +11,7 @@ import org.lenskit.mf.funksvd.FeatureCount
 import org.lenskit.pf.HPFItemScorer
 import org.lenskit.pf.IterationFrequency
 import org.lenskit.pf.IsProbabilityPrediciton
+import org.lenskit.pf.RandomSeed
 import org.lenskit.data.entities.CommonTypes
 import org.lenskit.data.ratings.EntityCountRatingVectorPDAO
 import org.lenskit.data.ratings.InteractionEntityType
@@ -21,8 +22,9 @@ bind ItemScorer to HPFItemScorer
 bind RatingVectorPDAO to EntityCountRatingVectorPDAO
 set InteractionEntityType to CommonTypes.RATING
 
-set IterationFrequency to 200
-set IterationCount to 800
+set IterationFrequency to 10
+set IterationCount to 125
+set RandomSeed to System.currentTimeMillis()
 
 for (k in[25,30,35,40,45,50,60,70,80,90,100,120,140,160,180,200,225,250]) {
     algorithm("PF") {

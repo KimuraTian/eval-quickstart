@@ -15,11 +15,13 @@ import org.lenskit.data.entities.CommonTypes
 import org.lenskit.data.ratings.EntityCountRatingVectorPDAO
 import org.lenskit.data.ratings.InteractionEntityType
 import org.lenskit.data.ratings.RatingVectorPDAO
+import org.lenskit.pf.RandomSeed
 
 bind ItemScorer to HPFItemScorer
 bind RatingVectorPDAO to EntityCountRatingVectorPDAO
 set InteractionEntityType to CommonTypes.RATING
 
-set IterationFrequency to 100
-set IterationCount to 500
+set IterationFrequency to 10
+set IterationCount to 125
 set FeatureCount to 100
+set RandomSeed to System.currentTimeMillis()
