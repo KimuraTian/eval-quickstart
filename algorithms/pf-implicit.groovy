@@ -25,3 +25,4 @@ set IterationFrequency to 10
 set IterationCount to 125
 set FeatureCount to 100
 set RandomSeed to System.currentTimeMillis()
+set IsProbabilityPrediciton to false
