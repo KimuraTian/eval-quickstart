@@ -22,7 +22,6 @@ bind RatingVectorPDAO to EntityCountRatingVectorPDAO
 set InteractionEntityType to CommonTypes.RATING
 
 set IterationFrequency to 10
-set IterationCount to 125
+set IterationCount to 200
 set FeatureCount to 100
 set RandomSeed to System.currentTimeMillis()
-set IsProbabilityPrediciton to false
