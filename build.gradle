@@ -86,10 +86,10 @@ task crossfold(type: Crossfold, group: 'evaluate') {
     // download data before evaluating
 //    dependsOn fetchData
 
-    input 'data/ml-100k.yml'
+//    input 'data/ml-100k.yml'
 //    input 'data/ml-10m.yml'
 //    input 'data/bx.yml'
-//    input 'data/en.yml'
+    input 'data/en.yml'
     // test on random 1/5 of each user's ratings
 //    holdoutFraction(0.2, 'random')
     holdout(20, 'random')

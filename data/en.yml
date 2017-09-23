@@ -1,5 +1,5 @@
 ratings:
-  file: en/EN-MS100k.csv
+  file: en/EN-MS.csv
   format: delimited
   delimiter: ","
   header: false
