@@ -9,8 +9,9 @@ import org.lenskit.api.ItemScorer
 import org.lenskit.mf.funksvd.FeatureCount
 
 import org.lenskit.pf.HPFItemScorer
-import org.lenskit.pf.IterationFrequency
+import org.lenskit.pf.ConvergenceCheckFrequency
 import org.lenskit.pf.IsProbabilityPrediciton
+import org.lenskit.pf.AbsErrorStoppingCondition
 import org.lenskit.data.entities.CommonTypes
 import org.lenskit.data.ratings.EntityCountRatingVectorPDAO
 import org.lenskit.data.ratings.InteractionEntityType
@@ -19,9 +20,12 @@ import org.lenskit.pf.RandomSeed
 
 bind ItemScorer to HPFItemScorer
 bind RatingVectorPDAO to EntityCountRatingVectorPDAO
+bind StoppingCondition to AbsErrorStoppingCondition
+set StoppingThreshold to 0.00001
 set InteractionEntityType to CommonTypes.RATING
+//set IsProbabilityPrediciton to false
 
-set IterationFrequency to 10
-set IterationCount to 200
+set ConvergenceCheckFrequency to 10
+set IterationCount to 50
 set FeatureCount to 100
 set RandomSeed to System.currentTimeMillis()
