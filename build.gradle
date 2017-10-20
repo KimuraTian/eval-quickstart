@@ -92,7 +92,9 @@ task crossfold(type: Crossfold, group: 'evaluate') {
     input 'data/en.yml'
     // test on random 1/5 of each user's ratings
 //    holdoutFraction(0.2, 'random')
-    holdout(20, 'random')
+//    holdout(20, 'random')
+    method 'partition_ratings'
+
     // use 5-fold cross-validation
     partitionCount 5
 }
@@ -108,8 +110,8 @@ task evaluate(type: TrainTest, group: 'evaluate') {
 //    dataSet crossfold
 
     // send the output to appropriate files
-    outputFile "$buildDir/eval-results-en100k-sweep.csv"
-    userOutputFile "$buildDir/eval-users-en100k-sweep.csv"
+    outputFile "$buildDir/eval-results.csv"
+    userOutputFile "$buildDir/eval-users-results.csv"
 
     // configure our algorithms
 //    algorithm 'PersMean', 'algorithms/pers-mean.groovy'
@@ -121,7 +123,7 @@ task evaluate(type: TrainTest, group: 'evaluate') {
 //    algorithm 'funkSVD', 'algorithms/funksvd.groovy'
 
 //    algorithm 'ItemItem-Implicit', 'algorithms/item-item-implicit.groovy'
-    algorithm 'funkSVD-Implicit', 'algorithms/funksvd-implicit.groovy'
+//    algorithm 'funkSVD-Implicit', 'algorithms/funksvd-implicit.groovy'
     algorithm 'PF-Implicit', 'algorithms/pf-implicit.groovy'
 
 //    algorithm 'algorithms/funksvd-implicit-sweep.groovy'
@@ -135,9 +137,9 @@ task evaluate(type: TrainTest, group: 'evaluate') {
     }
     recommend {
         listSize 20
-        candidateItems "allItems"
+//        candidateItems "allItems"
 //        candidateItems "user.testItems"
-        excludeItems "user.trainItems"
+//        excludeItems "user.trainItems"
 //        metric 'length'
 //        metric 'ndcg'
         metric 'mrr'
