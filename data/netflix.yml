@@ -1,5 +1,5 @@
 ratings:
-  file: en/EN-MS.csv
+  file: netflix/netflix.csv
   format: delimited
   delimiter: ","
   header: false
