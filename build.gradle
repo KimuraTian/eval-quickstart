@@ -86,9 +86,9 @@ task crossfold(type: Crossfold, group: 'evaluate') {
     // download data before evaluating
 //    dependsOn fetchData
 
-//    input 'data/ml-100k.yml'
+    input 'data/ml-100k.yml'
 //    input 'data/ml-10m.yml'
-    input 'data/bx.yml'
+//    input 'data/bx.yml'
 //    input 'data/en.yml'
     // test on random 1/5 of each user's ratings
 //    holdoutFraction(0.2, 'random')
@@ -118,16 +118,16 @@ task evaluate(type: TrainTest, group: 'evaluate') {
 //    algorithm 'ItemItem', 'algorithms/item-item.groovy'
 //    algorithm 'ItemItem', 'algorithms/item-item-bias.groovy'
 //    algorithm 'algorithms/slim.groovy'
-//    algorithm 'PF', 'algorithms/pf.groovy'
+    algorithm 'PF', 'algorithms/pf.groovy'
     algorithm 'Popular', 'algorithms/popular.groovy'
-//    algorithm 'funkSVD', 'algorithms/funksvd.groovy'
+    algorithm 'funkSVD', 'algorithms/funksvd.groovy'
 
 //    algorithm 'ItemItem-Implicit', 'algorithms/item-item-implicit.groovy'
-    algorithm 'funkSVD-Implicit', 'algorithms/funksvd-implicit.groovy'
+//    algorithm 'funkSVD-Implicit', 'algorithms/funksvd-implicit.groovy'
 //    algorithm 'PF-Implicit', 'algorithms/pf-implicit.groovy'
 
 //    algorithm 'algorithms/funksvd-implicit-sweep.groovy'
-    algorithm 'algorithms/pf-implicit-sweep.groovy'
+//    algorithm 'algorithms/pf-implicit-sweep.groovy'
 
     // and some evaluation tasks and metrics
     predict {
@@ -141,7 +141,7 @@ task evaluate(type: TrainTest, group: 'evaluate') {
 //        candidateItems "user.testItems"
 //        excludeItems "user.trainItems"
 //        metric 'length'
-//        metric 'ndcg'
+        metric 'ndcg'
         metric 'mrr'
 //        metric 'map'
         metric 'pr'
